@@ -15,14 +15,12 @@ Route::resource('items', ItemController::class);
 // Kategori
 Route::resource('categories', CategoryController::class);
 
-// Barang Masuk
-Route::post('/transactions/in', [StockTransactionController::class, 'storeIn'])
-    ->name('transactions.in');
-
-// Barang Keluar
-Route::post('/transactions/out', [StockTransactionController::class, 'storeOut'])
-    ->name('transactions.out');
-
-// Riwayat Transaksi
+// Transaksi
 Route::get('/transactions', [StockTransactionController::class, 'index'])
     ->name('transactions.index');
+
+Route::get('/transactions/create', [StockTransactionController::class, 'create'])
+    ->name('transactions.create');
+
+Route::post('/transactions', [StockTransactionController::class, 'store'])
+    ->name('transactions.store');
